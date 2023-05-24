@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+      "alwaysStrict": true,
+      "declaration": true,
+      "emitDecoratorMetadata": true,
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "forceConsistentCasingInFileNames": true,
+      "incremental": true,
+      "inlineSources": true,
+      "lib": ["ES2019"],
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "resolveJsonModule": true,
+      "sourceMap": true,
+      "strict": true,
+      "strictFunctionTypes": true,
+      "strictNullChecks": true,
+      "strictPropertyInitialization": true,
+      "target": "ES2019",
+      "tsBuildInfoFile": ".tsbuildinfo",
+      "types": [
+        "node",
+        "jest"
+      ],
+    },
+    "exclude": [
+      "./node_modules/",
+      "./tests/"
+    ],
+    "include": [
+      "./src/"
+    ]
+  }
+  

@@ -1,0 +1,82 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "ninja-practice",
+      "description": "Projet recherche dev",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "servers": [
+      {
+        "url": "/",
+        "description": "Local Dev"
+      }
+    ],
+    "securityDefinitions": {
+      "Bearer": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+  
+      }
+  
+    },
+    "tags": [
+      { "name": "ninja-practice", "description": "API for search dev" }
+    ],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+      "/api/dev": {
+        "post": {
+          "tags": ["Url"],
+          "summary": "Post dev",
+          "requestBody": {
+            "description": "save dev",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Url"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "400": {
+              "description": "Failed. Bad post data."
+            }
+          }
+        }
+      }
+     
+    },
+  
+    "definitions": {
+      "Url": {
+        "type": "object",
+        "properties": {
+          "originalUrl": {
+            "type": "string"
+          } 
+        }
+      }
+    },
+    "Url": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "object",
+          "additionnalProperties":{
+            "$ref": "#/definitions/Url"
+          }
+        }
+      }
+    }
+  }
