@@ -10,7 +10,21 @@ const state = reactive({
   firstName: '',
   lastName: '',
   seniority: 0,
-  stack: [] as string[],
+  stack: [
+    'Node.js',
+    'Vue.js',
+    'Angular',
+    'Python',
+    'React',
+    'Kafka',
+    'Java',
+    'C#',
+    'Ruby',
+    'Swift',
+    'PHP',
+    'JavaScript',
+    'C++'
+  ],
   description: '',
   availabilityDate: '',
   isInMission: false
@@ -28,8 +42,8 @@ const rules = {
 
 const v$ = useVuelidate(rules, state)
 
-function setStack(event) {
-  const { id, checked } = event.target
+function setStack(event: Event) {
+  const { id, checked } = event.target as HTMLInputElement
 
   if (checked) {
     state.stack.push(id)
@@ -44,7 +58,7 @@ function isActive(techno: string) {
 }
 
 async function submitForm() {
-  const isFormCorrect = true//await v$.$validate()
+  const isFormCorrect = await v$.$validate()
 
   if (isFormCorrect) {
     const formData = {
