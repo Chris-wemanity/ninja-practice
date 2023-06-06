@@ -1,0 +1,87 @@
+<script setup lang="ts">
+//import { useAuthStore } from '../../stores/auth'
+//import { computed } from 'vue'
+
+//const authStore = useAuthStore()
+
+//const isLoggedIn = computed(() => authStore.isAuthenticate)
+const isLoggedIn = false
+
+// function logout() {
+//   authStore.logout()
+// }
+</script>
+
+<template>
+  <header>
+    <h1>
+      <RouterLink to="/">Ninja-Practice</RouterLink>
+    </h1>
+
+    <nav>
+      <ul>
+        <li><RouterLink to="/ninja">Ninjas</RouterLink></li>
+        <li><RouterLink to="/register">Enregistrer un ninja</RouterLink></li>
+      </ul>
+    </nav>
+
+    <div>
+      <base-button v-if="!isLoggedIn" link to="/login" mode="outline">Se Connecter</base-button>
+      <base-button v-if="isLoggedIn" mode="outline">Se Déconnecter</base-button>
+    </div>
+  </header>
+</template>
+
+<style scoped>
+header {
+  height: 5rem;
+  background-color: white;
+  margin: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+li {
+  margin: 0 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.25rem;
+}
+
+a:hover,
+a:active,
+a.router-link-active {
+  color: #45006d;
+  border-color: #45006d;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #45006d;
+  background-color: transparent;
+  color: #45006d;
+  border-radius: 30px;
+}
+
+button:hover,
+button:active {
+  background-color: #f0d5ff;
+}
+</style>
