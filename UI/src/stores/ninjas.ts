@@ -10,7 +10,7 @@ export const useNinjasStore = defineStore('ninjas', () => {
       firstName: string
       lastName: string
       seniority: number
-      stack: string[]
+      devStack: string[]
       description: string
       availabilityDate: string
       isInMission: boolean
@@ -21,7 +21,7 @@ export const useNinjasStore = defineStore('ninjas', () => {
       firstName: ninjaData.firstName,
       lastName: ninjaData.lastName,
       seniority: ninjaData.seniority,
-      stack: ninjaData.stack,
+      stack: ninjaData.devStack,
       description: ninjaData.description,
       availabilityDate: ninjaData.availabilityDate,
       isInMission: ninjaData.isInMission

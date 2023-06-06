@@ -6,7 +6,18 @@ import { required, minLength } from '@vuelidate/validators'
 
 const ninjaStore = useNinjasStore()
 
-const state = reactive({
+interface State {
+  firstName: string
+  lastName: string
+  seniority: number
+  stack: string[]
+  description: string
+  availabilityDate: string
+  isInMission: boolean
+  devStack: string[]
+}
+
+const state: State = reactive({
   firstName: '',
   lastName: '',
   seniority: 0,
@@ -27,7 +38,8 @@ const state = reactive({
   ],
   description: '',
   availabilityDate: '',
-  isInMission: false
+  isInMission: false,
+  devStack: [] // Array<string>
 })
 
 const rules = {
@@ -42,23 +54,22 @@ const rules = {
 
 const v$ = useVuelidate(rules, state)
 
-function setStack(event: Event) {
+function setDevStack(event: Event) {
   const { id, checked } = event.target as HTMLInputElement
-
   if (checked) {
-    state.stack.push(id)
+    state.devStack.push(id)
   } else {
-    const index = state.stack.findIndex((techno) => techno === id)
-    state.stack.splice(index, 1)
+    const index = state.devStack.findIndex((techno) => techno === id)
+    state.devStack.splice(index, 1)
   }
 }
 
 function isActive(techno: string) {
-  return state.stack.includes(techno)
+  return state.devStack.includes(techno)
 }
 
 async function submitForm() {
-  const isFormCorrect = await v$.$validate()
+  const isFormCorrect = true //await v$.$validate()
 
   if (isFormCorrect) {
     const formData = {
@@ -107,7 +118,7 @@ async function submitForm() {
       <h3>Stack Technique</h3>
       <template v-for="techno in state.stack" :key="techno">
         <span class="filter-option" :class="{ active: isActive(techno) }">
-          <input type="checkbox" :id="techno" @change="setStack" />
+          <input type="checkbox" :id="techno" @change="setDevStack" />
           <label :for="techno">{{ techno }}</label>
         </span>
       </template>
